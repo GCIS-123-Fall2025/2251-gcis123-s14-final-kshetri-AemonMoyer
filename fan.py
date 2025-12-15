@@ -54,7 +54,7 @@ Returns:    None
 def turn_off(fan):
     fan.speed = 0
     fan.is_on = False
-    
+    return None
 
 """
 Complete the get_state function below.
@@ -69,6 +69,7 @@ More test cases in main() method
 """
 def get_state(fan):
     return (fan.brand, fan.is_on, fan.speed)
+
 
 
 def main():
