@@ -48,8 +48,9 @@ def even_digits(integer):
     for x in range(length):
         value = stack2.pop()
         if value % 2 == 0:
-            answer = answer + value*(10*count)
-            print(answer)
+            answer = answer + value*(10**count)
+            count+=1
+    print(answer)
     
 
 
