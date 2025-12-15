@@ -1,4 +1,5 @@
-import node_stack
+from node_stack import Stack
+from dict_queue import Queue
 
 """
 Course: GCIS 123 (2251)
@@ -23,10 +24,37 @@ For credit your function must use a stack or a queue in a significant way.
 """
 
 def even_digits(integer):
-    pass # please replace with your solution
+    stack2 = Stack()
+    stack1 = Stack()
+    integer_length_tool = integer
+    length = 0
+    stacking_tool = 0
+    answer = 0
+    while integer_length_tool > 0:
+        length += 1
+        integer_length_tool = integer_length_tool//10
+    for x in range(length):
+        value = integer // (10**x)
+        stack1.push(value)
+    count_tool = length
+    #count_tool is being used because is_empty was being weird
+    while count_tool > 0:
+        value = stack1.pop()
+        new_value = value - stacking_tool*(10)
+        stacking_tool = value
+        count_tool -= 1
+        stack2.push(new_value)
+    count = 0
+    for x in range(length):
+        value = stack2.pop()
+        if value % 2 == 0:
+            answer = answer + value*(10*count)
+            print(answer)
+    
 
 
 
+even_digits(1234567890)
 
 
 # several test cases provided for even digits - 1, 2, 34, 1234567890
