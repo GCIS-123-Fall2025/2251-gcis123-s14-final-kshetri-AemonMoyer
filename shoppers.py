@@ -18,11 +18,65 @@ Write down the manual test by creating at least two items.
 """
 
 class Item:
-    pass # please replace with your solution
+    
+    __slots__ = "__item_code","__name","__price"
+
+    def __init__(self,item_code,name,price):
+        self.__item_code = item_code
+        self.__name = name
+        self.__price = price
+    
+    def get_item_code(self):
+        return self.__item_code
+    
+    def get_name(self):
+        return self.__name
+    
+    def get_price(self):
+        return self.__price
+        
+    def __eq__(self, other):
+        if type(self) == type(other):
+            return self.__item_code == other.__item_code
+        else:
+            return False
+        
+    def ____(self, other):
+        if type(self) == type(other):
+            return self.__item_code < other.__item_code
+        else:
+            raise TypeError 
+    
+    def __hash__(self):
+        var_hash = 0
+        for x in self.__item_code:
+            var_hash = var_hash + ord(x)
+        return var_hash
+    
+    
+    def __str__(self):
+        return "("+self.__item_code +', '+ self.__name +', '+ str(self.__price)+')'
+    
 
 
 # manual test from main() method
-def main():     pass
- 
+def main():     
+  item1 = Item("DDD-555",'apple',5.99)
+  item2 = Item("BBB-555",'orange',10.99)
+  item3 = Item("ACC-555",'pear',4.66)
+  item4 = Item("BBB-666",'bannana',5.00)
+  item5 = Item("LLP-888",'grape',6.99)
+  a_set = {item1,item2,item3,item4,item5}
+  for x in a_set:
+      print(x)
+  print('\n')
+  a_list = [item1,item2,item3,item4,item5]
+  for x in a_list:
+      print(x)
+  # b_list = sorted(a_list)
+  # for x in b_list:
+  #     print(x)
 
-if __name__ == "__main__":    main()
+
+if __name__ == "__main__":
+    main()
